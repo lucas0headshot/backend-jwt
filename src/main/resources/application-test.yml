@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/backend_jwt_test
