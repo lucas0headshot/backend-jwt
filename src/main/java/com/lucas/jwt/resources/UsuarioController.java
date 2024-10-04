@@ -20,13 +20,13 @@ public class UsuarioController extends AbstractController {
 
 
     @PostMapping
-    public ResponseEntity salvar(@RequestBody Usuario entidade) {
+    public ResponseEntity<UsuarioResponse> salvar(@RequestBody Usuario entidade) {
         return ResponseEntity.created(URI.create("/api/usuarios/" + entidade.getId())).body(service.salvar(entidade));
     }
 
 
     @PostMapping("/entrar")
-    public ResponseEntity entrar(@RequestBody Usuario entidade) {
+    public ResponseEntity<String> entrar(@RequestBody Usuario entidade) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.entrar(entidade));
     }
 
@@ -38,7 +38,7 @@ public class UsuarioController extends AbstractController {
 
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("{login}")
+    @GetMapping("/{login}")
     public ResponseEntity<Usuario> byLogin(@PathVariable("login") String login) {
         return ResponseEntity.ok().body(service.findByLogin(login));
     }
