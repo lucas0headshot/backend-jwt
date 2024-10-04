@@ -1,0 +1,16 @@
+spring:
+  name: "Lucas JWT"
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/seu_banco
+    password: sua_senha
+    username: seu_usuario
+    driverClassName: org.postgresql.Driver
+  security:
+    token:
+      secret: backendjwt
+      expiration_time: tempo_expiracao
