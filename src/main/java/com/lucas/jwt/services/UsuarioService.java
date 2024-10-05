@@ -18,14 +18,17 @@ public class UsuarioService {
     private final UsuarioRepository repository;
     private final AuthenticationManager authManager;
     private final TokenService tokenService;
+    private final EmailService emailService;
 
 
     public UsuarioResponse salvar(Usuario entidade) {
         var senha_criptografada = new BCryptPasswordEncoder().encode(entidade.getSenha());
 
-        var usuario = new Usuario(entidade.getLogin(), senha_criptografada);
+        var usuario = new Usuario(entidade.getLogin(), senha_criptografada, entidade.getEmail());
 
         var salvo = repository.save(usuario);
+
+        emailService.addEmail(usuario.getEmail());
 
         return new UsuarioResponse(salvo.getLogin());
     }
