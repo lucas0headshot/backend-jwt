@@ -20,6 +20,7 @@ import java.util.List;
 public class Usuario extends EntityID implements UserDetails {
     private String login;
     private String senha;
+    private String email;
 
 
     @Override
