@@ -6,11 +6,22 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/seu_banco
-    password: sua_senha
-    username: seu_usuario
+    url: jdbc:postgresql://localhost:5432/jwt
+    password: senac
+    username: postgres
     driverClassName: org.postgresql.Driver
   security:
     token:
       secret: backendjwt
       expiration_time: tempo_expiracao
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    username: seu_email
+    password: "senha_smtp"
+    port: '587'
